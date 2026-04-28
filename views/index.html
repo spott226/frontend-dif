@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIF Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family: Arial;
+  background:#eef2f6;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.header{
+  background:#1e3a5f;
+  color:white;
+  padding:15px;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.cards{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  border-radius:8px;
+  flex:1;
+  min-width:200px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.actions{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+input{
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  width:260px;
+}
+
+button{
+  padding:12px;
+  border:none;
+  background:#1e3a5f;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#16314d;
+}
+
+table{
+  width:100%;
+  margin-top:20px;
+  border-collapse:collapse;
+  background:white;
+}
+
+th, td{
+  padding:10px;
+  border-bottom:1px solid #ddd;
+  font-size:13px;
+}
+
+th{
+  background:#1e3a5f;
+  color:white;
+}
+
+tr:hover{
+  background:#f5f5f5;
+  cursor:pointer;
+}
+
+/* 🔥 MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal-content{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  width:95%;
+  max-width:900px;
+  max-height:90vh;
+  overflow:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.section{
+  margin-top:15px;
+  padding:10px;
+  border-radius:8px;
+  background:#f7f9fc;
+}
+
+.section h3{
+  margin:0 0 8px 0;
+  color:#1e3a5f;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+  PANEL DIF - BENEFICIARIOS
+</div>
+
+<div class="cards">
+  <div class="card">
+    <b>Total registros</b>
+    <div id="total">0</div>
+  </div>
+
+  <div class="card">
+    <b>Consulta actual</b>
+    <div id="query">TODOS</div>
+  </div>
+</div>
+
+<div class="actions">
+  <input id="busqueda" placeholder="Nombre, folio o ID">
+  <button onclick="buscar()">Buscar</button>
+  <button onclick="cargar()">Recargar</button>
+  <button onclick="nuevo()">Nuevo</button>
+  <button onclick="exportXML()">XML</button>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>ID</th>
+  <th>Nombre</th>
+  <th>CURP</th>
+  <th>Folio</th>
+  <th>Fecha</th>
+</tr>
+</thead>
+<tbody id="tabla"></tbody>
+</table>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrar()">X</span>
+    <div id="detalleContent"></div>
+  </div>
+</div>
+
+<script>
+
+let baseURL = "http://localhost:3000"
+
+async function cargar(q = ""){
+  const res = await fetch(`${baseURL}/api/buscar?q=${q}`)
+  const data = await res.json()
+
+  total.innerText = data.length
+  query.innerText = q || "TODOS"
+
+  tabla.innerHTML = ""
+
+  data.forEach(b => {
+    tabla.innerHTML += `
+      <tr onclick="detalle(${b.id})">
+        <td>${b.id}</td>
+        <td>${b.nombre || ""}</td>
+        <td>${b.curp || ""}</td>
+        <td>${b.folio || ""}</td>
+        <td>${formatFecha(b.fecha_elaboracion)}</td>
+      </tr>
+    `
+  })
+}
+
+async function detalle(id){
+
+  const res = await fetch(`${baseURL}/api/captura/${id}`)
+  const d = await res.json()
+
+  const html = `
+
+  <div class="section">
+    <h3>👤 Datos Generales</h3>
+    <p><b>Nombre:</b> ${d.general.nombre}</p>
+    <p><b>CURP:</b> ${d.general.curp}</p>
+    <p><b>Folio:</b> ${d.general.folio}</p>
+  </div>
+
+  <div class="section">
+    <h3>🏠 Vivienda</h3>
+    <p>${d.vivienda.tipo_vivienda}</p>
+  </div>
+
+  <div class="section">
+    <h3>⚡ Servicios</h3>
+    <p>Agua: ${d.servicios.agua}</p>
+    <p>Luz: ${d.servicios.luz}</p>
+    <p>Drenaje: ${d.servicios.drenaje}</p>
+  </div>
+
+  <div class="section">
+    <h3>📌 Detalle Servicios</h3>
+    <ul>${d.detalle.map(x=>`<li>${x.tipo}</li>`).join("")}</ul>
+  </div>
+
+  <div class="section">
+    <h3>💻 TICS</h3>
+    <ul>${d.tics.map(x=>`<li>${x.tipo}</li>`).join("")}</ul>
+  </div>
+
+  <div class="section">
+    <h3>📦 Bienes</h3>
+    <ul>${d.bienes.map(x=>`<li>${x.tipo}</li>`).join("")}</ul>
+  </div>
+
+  <div class="section">
+    <h3>💰 Egresos</h3>
+    <p>Alimentos: ${d.egresos.alimentos || 0}</p>
+    <p>Servicios: ${d.egresos.servicios || 0}</p>
+  </div>
+
+  <div class="section">
+    <h3>🧠 Salud</h3>
+    <ul>${d.salud.map(x=>`<li>${x.servicio}</li>`).join("")}</ul>
+  </div>
+
+  <div class="section">
+    <h3>👨‍👩‍👧 Familiares</h3>
+    <ul>${d.familiares.map(x=>`<li>${x.nombre} - ${x.parentesco}</li>`).join("")}</ul>
+  </div>
+
+  `
+
+  detalleContent.innerHTML = html
+  modal.style.display = "flex"
+}
+
+function cerrar(){
+  modal.style.display = "none"
+}
+
+function buscar(){
+  cargar(busqueda.value)
+}
+
+function nuevo(){
+  window.location.href = "hoja1.html"
+}
+
+async function exportXML(){
+  const res = await fetch(`${baseURL}/api/exportar-xml`)
+  const blob = await res.blob()
+  const url = URL.createObjectURL(blob)
+
+  const a = document.createElement('a')
+  a.href = url
+  a.download = "beneficiarios.xml"
+  a.click()
+}
+
+function formatFecha(f){
+  if(!f) return ""
+  return f.split("T")[0]
+}
+
+cargar()
+
+</script>
+
+</body>
+</html>

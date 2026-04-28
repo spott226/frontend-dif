@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja 3 DIF</title>
+
+<style>
+body{font-family:Arial;background:#eef2f6;margin:0;padding:12px}
+.sheet{background:#fff;border:2px solid #000;max-width:1100px;margin:auto;padding:14px}
+
+.header{background:#1e3a5f;color:#fff;text-align:center;padding:12px;font-weight:bold}
+
+.section{border-top:3px solid #1e3a5f;margin-top:14px;padding-top:10px}
+.section-title{background:#1e3a5f;color:#fff;padding:6px;font-size:13px;margin-bottom:8px;font-weight:bold}
+
+.title{font-weight:bold;margin-bottom:6px;color:#1e3a5f}
+
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{border:1px solid #000;padding:5px;font-size:12px}
+
+input,select{padding:4px;border:1px solid #333;font-size:12px}
+
+.inline{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.hidden{display:none}
+
+button{width:100%;margin-top:10px;padding:10px;background:#1e3a5f;color:#fff;border:none}
+</style>
+</head>
+
+<body>
+
+<div class="sheet">
+
+<div class="header">HOJA 3 – EGRESOS Y CALIDAD DE VIDA</div>
+
+<!-- EGRESOS -->
+<div class="section">
+<div class="section-title">EGRESOS DE LA VIVIENDA</div>
+
+<div class="title">18.- En promedio, ¿cuánto gasta al mes en los siguientes rubros?</div>
+
+<table>
+<tr><td>Compra de alimentos</td><td><input name="egreso_alimentos"></td></tr>
+<tr><td>Vestido y calzado</td><td><input name="egreso_vestido"></td></tr>
+<tr><td>Medicamentos / consultas médicas</td><td><input name="egreso_medicina"></td></tr>
+<tr><td>Colegiaturas / útiles escolares</td><td><input name="egreso_educacion"></td></tr>
+<tr><td>Pago de renta</td><td><input name="egreso_renta"></td></tr>
+<tr><td>Servicios (agua, luz, gas, internet, telefonía)</td><td><input name="egreso_servicios"></td></tr>
+<tr><td>Transporte (incluye gasolina)</td><td><input name="egreso_transporte"></td></tr>
+<tr><td>Esparcimiento y convivencia</td><td><input name="egreso_esparcimiento"></td></tr>
+</table>
+</div>
+
+<!-- ALIMENTACIÓN -->
+<div class="section">
+<div class="section-title">ALIMENTACIÓN BÁSICA</div>
+
+<div class="title">19.- En su hogar, ¿con qué frecuencia consumen los siguientes alimentos?</div>
+
+<table>
+<tr><th>Alimento</th><th>Diario</th><th>Cada 3 días</th><th>Eventualmente</th><th>Casi nunca</th></tr>
+
+<tr>
+<td>Carne</td>
+<td><input type="radio" name="c1" value="diario"></td>
+<td><input type="radio" name="c1" value="cada_3_dias"></td>
+<td><input type="radio" name="c1" value="eventual"></td>
+<td><input type="radio" name="c1" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Pollo</td>
+<td><input type="radio" name="c2" value="diario"></td>
+<td><input type="radio" name="c2" value="cada_3_dias"></td>
+<td><input type="radio" name="c2" value="eventual"></td>
+<td><input type="radio" name="c2" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Huevo</td>
+<td><input type="radio" name="c3" value="diario"></td>
+<td><input type="radio" name="c3" value="cada_3_dias"></td>
+<td><input type="radio" name="c3" value="eventual"></td>
+<td><input type="radio" name="c3" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Leche</td>
+<td><input type="radio" name="c4" value="diario"></td>
+<td><input type="radio" name="c4" value="cada_3_dias"></td>
+<td><input type="radio" name="c4" value="eventual"></td>
+<td><input type="radio" name="c4" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Fruta / Verdura</td>
+<td><input type="radio" name="c5" value="diario"></td>
+<td><input type="radio" name="c5" value="cada_3_dias"></td>
+<td><input type="radio" name="c5" value="eventual"></td>
+<td><input type="radio" name="c5" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Frijol</td>
+<td><input type="radio" name="c6" value="diario"></td>
+<td><input type="radio" name="c6" value="cada_3_dias"></td>
+<td><input type="radio" name="c6" value="eventual"></td>
+<td><input type="radio" name="c6" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Tortilla</td>
+<td><input type="radio" name="c7" value="diario"></td>
+<td><input type="radio" name="c7" value="cada_3_dias"></td>
+<td><input type="radio" name="c7" value="eventual"></td>
+<td><input type="radio" name="c7" value="casi_nunca"></td>
+</tr>
+<tr>
+<td>Sopa</td>
+<td><input type="radio" name="c8" value="diario"></td>
+<td><input type="radio" name="c8" value="cada_3_dias"></td>
+<td><input type="radio" name="c8" value="eventual"></td>
+<td><input type="radio" name="c8" value="casi_nunca"></td>
+</tr>
+</table>
+</div>
+
+<!-- APOYOS -->
+<div class="section">
+<div class="section-title">APOYOS DE PROGRAMAS DE GOBIERNO</div>
+
+<div class="title">20.- ¿Actualmente reciben algún apoyo de gobierno?</div>
+
+<label><input type="radio" name="apoyo" value="si">Sí</label>
+<label><input type="radio" name="apoyo" value="no">No</label>
+
+<div id="apoyoBox" class="hidden">
+<select name="tipo_apoyo">
+<option value="especie">Especie</option>
+<option value="economico">Económico</option>
+<option value="ambos">Ambos</option>
+</select>
+</div>
+
+<div class="title">21.- En los últimos 6 meses, ¿ha solicitado algún tipo de apoyo?</div>
+
+<label><input type="radio" name="solicito" value="si">Sí</label>
+<label><input type="radio" name="solicito" value="no">No</label>
+
+<table id="tablaApoyo" class="hidden">
+<tr><th>#</th><th>Apoyo solicitado</th><th>Dependencia</th></tr>
+<tr><td>1</td><td><input name="apoyo_solicitado_1"></td><td><input name="dependencia_1"></td></tr>
+<tr><td>2</td><td><input name="apoyo_solicitado_2"></td><td><input name="dependencia_2"></td></tr>
+<tr><td>3</td><td><input name="apoyo_solicitado_3"></td><td><input name="dependencia_3"></td></tr>
+<tr><td>4</td><td><input name="apoyo_solicitado_4"></td><td><input name="dependencia_4"></td></tr>
+<tr><td>5</td><td><input name="apoyo_solicitado_5"></td><td><input name="dependencia_5"></td></tr>
+</table>
+</div>
+
+<!-- CALIDAD DE VIDA -->
+<div class="section">
+<div class="section-title">PERCEPCIÓN DE LA CALIDAD DE VIDA</div>
+
+<div class="title">22.- ¿Usted o algún miembro de su familia enfrenta alguna de las siguientes situaciones?</div>
+
+Violencia
+<label><input type="radio" name="viol" value="si">Sí</label>
+<label><input type="radio" name="viol" value="no">No</label>
+
+<div id="violBox" class="hidden inline">
+<label><input type="checkbox" name="tipo_violencia" value="psicologica">Psicológica</label>
+<label><input type="checkbox" name="tipo_violencia" value="economica">Económica</label>
+<label><input type="checkbox" name="tipo_violencia" value="sexual">Sexual</label>
+<label><input type="checkbox" name="tipo_violencia" value="fisica">Física</label>
+<label><input type="checkbox" name="tipo_violencia" value="genero">De género</label>
+</div>
+
+<br>
+
+Adicciones
+<label><input type="radio" name="adic" value="si">Sí</label>
+<label><input type="radio" name="adic" value="no">No</label>
+
+<div id="adicBox" class="hidden">
+<input name="adic_quien" placeholder="¿Quién?">
+<input name="adic_edad" placeholder="Edad">
+<div class="inline">
+<label><input type="checkbox" name="tipo_adiccion" value="alcohol">Alcohol</label>
+<label><input type="checkbox" name="tipo_adiccion" value="tabaco">Tabaco</label>
+<label><input type="checkbox" name="tipo_adiccion" value="drogas">Drogas</label>
+<label><input type="checkbox" name="tipo_adiccion" value="farmacos">Fármacos</label>
+<label><input type="checkbox" name="tipo_adiccion" value="otro">Otro</label>
+</div>
+</div>
+
+<br>
+
+Desempleo +6 meses
+<label><input type="radio" name="des" value="si">Sí</label>
+<label><input type="radio" name="des" value="no">No</label>
+
+<div id="desBox" class="hidden">
+<input name="des_quien" placeholder="¿Quién?">
+<input name="des_edad" placeholder="Edad">
+</div>
+
+<br>
+
+Problemas escolares
+<label><input type="radio" name="est" value="si">Sí</label>
+<label><input type="radio" name="est" value="no">No</label>
+
+<div id="estBox" class="hidden">
+<input name="est_quien" placeholder="¿Quién?">
+<input name="est_edad" placeholder="Edad">
+<select name="est_nivel">
+<option value="primaria">Primaria</option>
+<option value="secundaria">Secundaria</option>
+<option value="bachillerato">Bachillerato</option>
+<option value="superior">Superior</option>
+</select>
+</div>
+
+<div class="title">23.- ¿Qué tan seguro se siente al vivir en Aguascalientes?</div>
+<select name="seguridad">
+<option value="poco_seguro">Poco seguro</option>
+<option value="seguro">Seguro</option>
+<option value="muy_seguro">Muy seguro</option>
+<option value="ns_nc">No sabe / No contesta</option>
+</select>
+
+<div class="title">24.- ¿Qué tan satisfecho se siente con su vida?</div>
+<select name="satisfaccion">
+<option value="poco_satisfecho">Poco satisfecho</option>
+<option value="satisfecho">Satisfecho</option>
+<option value="muy_satisfecho">Muy satisfecho</option>
+<option value="ns_nc">No sabe / No contesta</option>
+</select>
+
+<div class="title">25.- ¿Pertenece actualmente a algún grupo o asociación civil?</div>
+
+<label><input type="radio" name="grupo" value="si">Sí</label>
+<label><input type="radio" name="grupo" value="no">No</label>
+
+<div id="grupoBox" class="hidden">
+<input name="grupo_cual" placeholder="¿Cuál?">
+</div>
+
+</div>
+
+<div class="section">
+<div class="title">Observaciones</div>
+<input name="observaciones">
+</div>
+
+<div class="section">
+Nombre solicitante
+<input name="firma_solicitante">
+</div>
+
+<div class="section">
+<div class="section-title">DOCUMENTACIÓN</div>
+
+<!-- IDENTIFICACIÓN -->
+<div class="title">Identificación oficial *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_identificacion" value="entregada"> Entregada</label>
+<label><input type="checkbox" name="doc_identificacion" value="no_entregada"> No entregada</label>
+<label><input type="checkbox" name="doc_identificacion" value="legible"> Legible</label>
+<label><input type="checkbox" name="doc_identificacion" value="poco_legible"> Poco legible</label>
+<label><input type="checkbox" name="doc_identificacion" value="vigente"> Vigente</label>
+<label><input type="checkbox" name="doc_identificacion" value="vencida"> Vencida</label>
+</div>
+
+<!-- DOMICILIO -->
+<div class="title">Comprobante de domicilio *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_domicilio" value="entregada"> Entregada</label>
+<label><input type="checkbox" name="doc_domicilio" value="no_entregada"> No entregada</label>
+<label><input type="checkbox" name="doc_domicilio" value="legible"> Legible</label>
+<label><input type="checkbox" name="doc_domicilio" value="poco_legible"> Poco legible</label>
+<label><input type="checkbox" name="doc_domicilio" value="vigente"> Vigente</label>
+<label><input type="checkbox" name="doc_domicilio" value="vencida"> Vencida</label>
+</div>
+
+<!-- CURP PADRE -->
+<div class="title">CURP Madre/Padre/Tutor *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_curp_padre" value="entregada"> Entregada</label>
+<label><input type="checkbox" name="doc_curp_padre" value="no_entregada"> No entregada</label>
+<label><input type="checkbox" name="doc_curp_padre" value="legible"> Legible</label>
+<label><input type="checkbox" name="doc_curp_padre" value="poco_legible"> Poco legible</label>
+<label><input type="checkbox" name="doc_curp_padre" value="vigente"> Vigente</label>
+<label><input type="checkbox" name="doc_curp_padre" value="vencida"> Vencida</label>
+</div>
+
+<!-- CURP MENOR -->
+<div class="title">CURP del menor *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_curp_menor" value="entregada"> Entregada</label>
+<label><input type="checkbox" name="doc_curp_menor" value="no_entregada"> No entregada</label>
+<label><input type="checkbox" name="doc_curp_menor" value="legible"> Legible</label>
+<label><input type="checkbox" name="doc_curp_menor" value="poco_legible"> Poco legible</label>
+<label><input type="checkbox" name="doc_curp_menor" value="vigente"> Vigente</label>
+<label><input type="checkbox" name="doc_curp_menor" value="vencida"> Vencida</label>
+</div>
+
+<!-- FORMATO -->
+<div class="title">Formato de solicitud de apoyo *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_formato" value="entregada"> Entregado</label>
+<label><input type="checkbox" name="doc_formato" value="no_entregada"> Sin entregar</label>
+<label><input type="checkbox" name="doc_formato" value="legible"> Firma de solicitud</label>
+<label><input type="checkbox" name="doc_formato" value="poco_legible"> Pendiente de firma</label>
+<label><input type="checkbox" name="doc_formato" value="vigente"> Firma primer recibo</label>
+<label><input type="checkbox" name="doc_formato" value="vencida"> Pedniente primer recibo</label>
+</div>
+
+<!-- PRIVACIDAD -->
+<div class="title">Aviso de privacidad *</div>
+<div class="inline">
+<label><input type="checkbox" name="doc_privacidad" value="entregada"> Entregado</label>
+<label><input type="checkbox" name="doc_privacidad" value="no_entregada"> Pendiente</label>
+<label><input type="checkbox" name="doc_privacidad" value="legible"> Firmado</label>
+<label><input type="checkbox" name="doc_privacidad" value="poco_legible"> Sin firmar</label>
+</div>
+
+</div>
+
+<div class="section">
+Elaboró: <input name="elaboro">
+</div>
+
+<button onclick="window.location='hoja2.html'">⬅ Regresar</button>
+<button onclick="enviarTodo()">Enviar formulario</button>
+
+</div>
+
+<script>
+
+function guardarLocalHoja3(){
+
+    let data = JSON.parse(localStorage.getItem("formData")) || {};
+
+    // 🔹 INPUTS Y RADIOS
+    document.querySelectorAll("input, select").forEach((el) => {
+
+        let key = el.name;
+        if(!key) return;
+
+        if(el.type === "radio"){
+            if(el.checked){
+                data[key] = el.value;
+            }
+        }
+        else if(el.type !== "checkbox"){
+            data[key] = el.value;
+        }
+    });
+
+    const checkboxGroups = [
+    "tipo_violencia",
+    "tipo_adiccion",
+    "doc_identificacion",
+    "doc_domicilio",
+    "doc_curp_padre",
+    "doc_curp_menor",
+    "doc_formato",
+    "doc_privacidad"
+];
+
+    checkboxGroups.forEach(key => {
+        data[key] = [];
+
+        document.querySelectorAll(`[name="${key}"]:checked`).forEach(c => {
+            data[key].push(c.value);
+        });
+    });
+
+    localStorage.setItem("formData", JSON.stringify(data));
+}
+
+function enviarTodo(){
+
+    guardarLocalHoja3();
+
+    const dataFinal = JSON.parse(localStorage.getItem("formData")) || {};
+
+    fetch("http://localhost:3000/api/captura", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataFinal)
+    })
+    .then(res => {
+        if(res.ok){
+            alert("Datos guardados");
+            localStorage.clear();
+            window.location = "index.html";
+        }else{
+            alert("Error al enviar datos");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error de conexión");
+    });
+}
+
+document.querySelectorAll('[name="apoyo"]').forEach(r=>{
+r.onchange=()=>apoyoBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="solicito"]').forEach(r=>{
+r.onchange=()=>tablaApoyo.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="viol"]').forEach(r=>{
+r.onchange=()=>violBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="adic"]').forEach(r=>{
+r.onchange=()=>adicBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="des"]').forEach(r=>{
+r.onchange=()=>desBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="est"]').forEach(r=>{
+r.onchange=()=>estBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="grupo"]').forEach(r=>{
+r.onchange=()=>grupoBox.classList.toggle('hidden',r.value!=="si")
+})
+
+</script>
+
+</body>
+</html>

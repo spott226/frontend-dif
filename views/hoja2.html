@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja 2 DIF</title>
+
+<style>
+body{font-family:Arial;background:#eef2f6;margin:0;padding:10px}
+.sheet{background:#fff;border:2px solid #000;max-width:1100px;margin:auto;padding:12px}
+
+.header{background:#1e3a5f;color:#fff;text-align:center;padding:10px;font-weight:bold}
+
+.section{border-top:3px solid #1e3a5f;margin-top:14px;padding-top:10px}
+.section-title{background:#1e3a5f;color:#fff;padding:6px;font-size:13px;margin-bottom:8px;font-weight:bold}
+
+.title{font-weight:bold;margin-bottom:6px}
+.inline{display:flex;flex-wrap:wrap;gap:12px}
+.group{border:1px solid #ccc;padding:10px;background:#fafafa}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+input,select{padding:4px;border:1px solid #333;font-size:12px}
+.hidden{display:none}
+
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{border:1px solid #000;padding:5px;font-size:12px}
+button{width:100%;margin-top:10px;padding:10px;background:#1e3a5f;color:#fff;border:none}
+</style>
+</head>
+
+<body>
+
+<div class="sheet">
+
+<div class="header">
+HOJA 2 – SITUACIÓN DE VIVIENDA
+</div>
+
+<!-- SITUACIÓN -->
+<div class="section">
+<div class="section-title">SITUACIÓN DE LA VIVIENDA</div>
+
+<div class="title">9.- ¿La vivienda donde vive actualmente es...?</div>
+<div class="inline group">
+<label><input type="radio" name="vivienda" value="propia_escritura">Propia pagada con escritura</label>
+<label><input type="radio" name="vivienda" value="prestada">Prestada</label>
+<label><input type="radio" name="vivienda" value="propia_sin_escritura">Propia pagada sin escritura</label>
+<label><input type="radio" name="vivienda" value="heredada">Heredada</label>
+<label><input type="radio" name="vivienda" value="pagando">Propia aún la está pagando</label>
+<label><input type="radio" name="vivienda" value="intestada">Intestada</label>
+<label><input type="radio" name="vivienda" value="rentada">Rentada</label>
+<label><input type="checkbox" id="otroViv" value="otro">Otro</label>
+<input id="otroVivTxt" name="vivienda_otro" class="hidden" placeholder="Especificar">
+</div>
+
+<div class="row">
+<input name="no_pisos" placeholder="No. pisos">
+<input name="cuartos" placeholder="Cuartos">
+<input name="recamaras" placeholder="Recámaras">
+<input name="banos" placeholder="Baños">
+<input name="tiempo_viviendo" placeholder="Tiempo viviendo">
+</div>
+
+<div class="title">10.- ¿Qué tipo de vivienda es?</div>
+<div class="inline group">
+<label><input type="radio" name="tipo_vivienda" value="casa_independiente">Casa independiente</label>
+<label><input type="radio" name="tipo_vivienda" value="vecindad">Vecindad</label>
+<label><input type="radio" name="tipo_vivienda" value="duplex">Casa dúplex</label>
+<label><input type="radio" name="tipo_vivienda" value="azotea">Cuarto de azotea</label>
+<label><input type="radio" name="tipo_vivienda" value="departamento">Departamento</label>
+<label><input type="radio" name="tipo_vivienda" value="local">Local habilitado</label>
+</div>
+
+</div>
+
+<!-- SERVICIOS -->
+<div class="section">
+<div class="section-title">SERVICIOS BÁSICOS EN LA VIVIENDA</div>
+
+<div class="title">11.- ¿La vivienda cuenta con servicio de...?</div>
+
+<!-- LUZ -->
+<div class="group">
+Energía eléctrica
+<label><input type="radio" name="luz" value="si">Sí</label>
+<label><input type="radio" name="luz" value="no">No</label>
+
+<div id="luzBox" class="hidden">
+Contrato:
+<label><input type="radio" name="contrato_luz" value="si">Sí</label>
+<label><input type="radio" name="contrato_luz" value="no">No</label>
+</div>
+</div>
+
+<br>
+
+<!-- AGUA -->
+<div class="group">
+Agua potable
+<label><input type="radio" name="agua" value="si">Sí</label>
+<label><input type="radio" name="agua" value="no">No</label>
+
+<div id="aguaBox" class="hidden">
+Entubada:
+<label><input type="radio" name="agua_entubada" value="si">Sí</label>
+<label><input type="radio" name="agua_entubada" value="no">No</label>
+
+<div id="aguaOpciones" class="hidden">
+<label><input type="checkbox" name="agua_detalle" value="pipa">Pipa</label>
+<label><input type="checkbox" name="agua_detalle" value="pozo">Tanque / Pozo</label>
+<label><input type="checkbox" name="agua_detalle" value="llave_comunitaria">Llave comunitaria</label>
+</div>
+</div>
+</div>
+
+<br>
+
+<!-- DRENAJE -->
+<div class="group">
+Drenaje con desagüe a red pública
+<label><input type="radio" name="drenaje" value="si">Sí</label>
+<label><input type="radio" name="drenaje" value="no">No</label>
+
+<div id="drenajeBox" class="hidden">
+<label><input type="checkbox" name="drenaje_detalle" value="fosa">Fosa séptica</label>
+<label><input type="checkbox" name="drenaje_detalle" value="letrina">Letrina seca</label>
+<label><input type="checkbox" name="drenaje_detalle" value="pozo">Pozo</label>
+<label><input type="checkbox" name="drenaje_detalle" value="aire_libre">Aire libre</label>
+</div>
+</div>
+
+<br>
+
+<!-- BASURA -->
+<div class="group">
+Servicio de recolección de basura
+<label><input type="radio" name="basura" value="si">Sí</label>
+<label><input type="radio" name="basura" value="no">No</label>
+
+<div id="basuraBox" class="hidden">
+<label><input type="checkbox" name="basura_detalle" value="contenedor">Contenedor</label>
+<label><input type="checkbox" name="basura_detalle" value="camion">Camión</label>
+<label><input type="checkbox" name="basura_detalle" value="carro">Carro</label>
+<label><input type="checkbox" name="basura_detalle" value="deposito">Depósito</label>
+<label><input type="checkbox" name="basura_detalle" value="baldio">Terreno baldío</label>
+</div>
+</div>
+
+</div>
+
+<!-- TICS -->
+<div class="section">
+
+<div class="title">Acceso a TICs</div>
+<div class="inline group">
+
+<label><input type="checkbox" name="tics" value="internet">Internet</label>
+<label><input type="checkbox" name="tics" value="telefono">Telefonía</label>
+<label><input type="checkbox" name="tics" value="movil">Móvil</label>
+<label><input type="checkbox" name="tics" value="fijo">Fijo</label>
+<label><input type="checkbox" name="tics" value="tv_paga">TV de paga</label>
+
+</div>
+
+<!-- BIENES -->
+<div class="section">
+<div class="section-title">BIENES DE LA VIVIENDA</div>
+
+<div class="title">12.- ¿En la vivienda cuentan con...?</div>
+<div class="inline group">
+<label><input type="checkbox" name="bienes" value="refrigerador">Refrigerador</label>
+<label><input type="checkbox" name="bienes" value="estufa">Estufa (gas)</label>
+<label><input type="checkbox" name="bienes" value="parrilla">Parrilla eléctrica</label>
+<label><input type="checkbox" name="bienes" value="microondas">Horno de microondas</label>
+<label><input type="checkbox" name="bienes" value="lavadora">Lavadora</label>
+<label><input type="checkbox" name="bienes" value="calentador_gas">Calentador de gas</label>
+<label><input type="checkbox" name="bienes" value="calentador_electrico">Calentador eléctrico</label>
+<label><input type="checkbox" name="bienes" value="calentador_solar">Calentador solar</label>
+<label><input type="checkbox" name="bienes" value="tinaco">Tinaco</label>
+<label><input type="checkbox" name="bienes" value="cisterna">Cisterna / aljibe</label>
+<label><input type="checkbox" name="bienes" value="regadera">Regadera</label>
+<label><input type="checkbox" name="bienes" value="radio">Radio</label>
+<label><input type="checkbox" name="bienes" value="television">Televisores</label>
+<label><input type="checkbox" name="bienes" value="computadora">Computadora</label>
+<label><input type="checkbox" name="bienes" value="auto">Automóvil</label>
+</div>
+</div>
+
+<!-- CONDICIONES -->
+<div class="section">
+<div class="section-title">CONDICIONES DE LA VIVIENDA</div>
+
+<div class="title">13.- ¿Qué tipo de suelo tiene la vivienda?</div>
+<div class="inline group">
+
+<label><input type="radio" name="piso" value="cemento">Firme (cemento)</label>
+<label><input type="radio" name="piso" value="ceramico">Cerámico / mosaico</label>
+<label><input type="radio" name="piso" value="madera">Madera / duela</label>
+<label><input type="radio" name="piso" value="laminado">Laminado</label>
+<label><input type="radio" name="piso" value="adoquin">Adoquín</label>
+<label><input type="radio" name="piso" value="empedrado">Empedrado</label>
+<label><input type="radio" name="piso" value="tierra">Piso de tierra</label>
+
+<label><input type="radio" id="otroSuelo" name="piso" value="otro">Otro</label>
+<input id="otroSueloTxt" name="piso_otro" class="hidden" placeholder="Especificar">
+
+</div>
+
+<div class="title">14.- ¿Qué tipo de techo tiene la vivienda?</div>
+<div class="inline group">
+
+<label><input type="radio" name="techo" value="concreto">Concreto / cemento</label>
+<label><input type="radio" name="techo" value="madera">Madera / tejabán</label>
+<label><input type="radio" name="techo" value="vigueta">Vigueta / bovedilla</label>
+<label><input type="radio" name="techo" value="asbesto">Lámina asbesto</label>
+<label><input type="radio" name="techo" value="metalica">Lámina metálica</label>
+<label><input type="radio" name="techo" value="carton">Lámina cartón</label>
+<label><input type="radio" name="techo" value="reciclado">Material reciclado</label>
+
+<label><input type="radio" id="otroTecho" name="techo" value="otro">Otro</label>
+<input id="otroTechoTxt" name="techo_otro" class="hidden" placeholder="Especificar">
+
+</div>
+
+<!-- INGRESOS -->
+<div class="section">
+<div class="section-title">INGRESOS EN LA VIVIENDA</div>
+
+<div class="title">15.- Ingreso mensual</div>
+<select name="field_82">
+<option value="menos_5000">Menos de $5,000</option>
+<option value="5001_10000">$5,001 a $10,000</option>
+<option value="10001_20000">$10,001 a $20,000</option>
+<option value="20001_40000">$20,001 a $40,000</option>
+<option value="mas_40000">Más de $40,000</option>
+</select>
+<input name="ingreso_otro" placeholder="Otro">
+</div>
+
+<!-- PROVEEDOR -->
+<div class="section">
+<div class="title">16.- ¿Quién es el principal proveedor del hogar?</div>
+<select id="prov" name="prov">
+<option value="madre">Madre de familia</option>
+<option value="padre">Padre de familia</option>
+<option value="adulto_mayor">Adulto mayor</option>
+<option value="hijo_mayor">Hijo mayor</option>
+<option value="hijo_menor">Hijo menor</option>
+<option value="otro">Otro</option>
+</select>
+<input id="provOtro" name="proveedor_otro" class="hidden" placeholder="Especificar">
+</div>
+
+<!-- INTEGRANTES -->
+<div class="section">
+<div class="title">17.- ¿Cuántas personas integran este hogar?</div>
+
+<table>
+<tr>
+<th>#</th><th>Nombre</th><th>Sexo</th><th>Edad</th><th>Ocupación</th><th>Parentesco</th>
+</tr>
+<tr>
+<td>1</td>
+<td><input name="int_nombre_1"></td>
+<td><input name="int_sexo_1"></td>
+<td><input name="int_edad_1"></td>
+<td><input name="int_ocupacion_1"></td>
+<td><input name="int_parentesco_1"></td>
+</tr>
+<tr>
+<td>2</td>
+<td><input name="int_nombre_2"></td>
+<td><input name="int_sexo_2"></td>
+<td><input name="int_edad_2"></td>
+<td><input name="int_ocupacion_2"></td>
+<td><input name="int_parentesco_2"></td>
+</tr>
+<tr>
+<td>3</td>
+<td><input name="int_nombre_3"></td>
+<td><input name="int_sexo_3"></td>
+<td><input name="int_edad_3"></td>
+<td><input name="int_ocupacion_3"></td>
+<td><input name="int_parentesco_3"></td>
+</tr>
+<tr>
+<td>4</td>
+<td><input name="int_nombre_4"></td>
+<td><input name="int_sexo_4"></td>
+<td><input name="int_edad_4"></td>
+<td><input name="int_ocupacion_4"></td>
+<td><input name="int_parentesco_4"></td>
+</tr>
+<tr>
+<td>5</td>
+<td><input name="int_nombre_5"></td>
+<td><input name="int_sexo_5"></td>
+<td><input name="int_edad_5"></td>
+<td><input name="int_ocupacion_5"></td>
+<td><input name="int_parentesco_5"></td>
+</tr>
+</table>
+
+<div class="row">
+    <b>Personas viviendo en el hogar</b>
+<input name="adultos" placeholder="Adultos">
+<input name="menores" placeholder="Menores">
+</div>
+
+<button onclick="window.location='hoja1.html'">⬅ Regresar</button>
+<button onclick="guardarLocal(); window.location='hoja3.html';">Siguiente ➡</button>
+</div>
+
+</div>
+
+<script>
+
+function guardarLocal(){
+
+    let data = JSON.parse(localStorage.getItem("formData")) || {};
+
+    // 🔹 INPUTS Y RADIOS
+    document.querySelectorAll("input, select").forEach((el) => {
+
+        let key = el.name;
+        if(!key) return;
+
+        if(el.type === "radio"){
+            if(el.checked){
+                data[key] = el.value;
+            }
+        }
+        else if(el.type !== "checkbox"){
+            data[key] = el.value;
+        }
+    });
+
+    // 🔥 CHECKBOXES CORRECTOS
+    const checkboxGroups = [
+    "agua_detalle",
+    "drenaje_detalle",
+    "basura_detalle",
+    "tics",
+    "bienes"
+];
+
+    checkboxGroups.forEach(key => {
+        data[key] = [];
+
+        document.querySelectorAll(`[name="${key}"]:checked`).forEach(c => {
+            data[key].push(c.value);
+        });
+    });
+
+    localStorage.setItem("formData", JSON.stringify(data));
+}
+
+// ==============================
+// LUZ
+// ==============================
+document.querySelectorAll('[name="luz"]').forEach(r => {
+    r.onchange = () => {
+        luzBox.classList.toggle('hidden', r.value !== "si");
+    }
+});
+
+// ==============================
+// AGUA (🔥 CORREGIDO)
+// ==============================
+document.querySelectorAll('[name="agua"]').forEach(r => {
+    r.onchange = () => {
+        aguaBox.classList.toggle('hidden', r.value !== "si");
+        aguaOpciones.classList.toggle('hidden', r.value !== "si"); // 👈 FIX REAL
+    }
+});
+
+// ==============================
+// DRENAJE
+// ==============================
+document.querySelectorAll('[name="drenaje"]').forEach(r => {
+    r.onchange = () => {
+        drenajeBox.classList.toggle('hidden', r.value !== "no");
+    }
+});
+
+// ==============================
+// BASURA
+// ==============================
+document.querySelectorAll('[name="basura"]').forEach(r => {
+    r.onchange = () => {
+        basuraBox.classList.toggle('hidden', r.value !== "si");
+    }
+});
+
+// ==============================
+// PROVEEDOR
+// ==============================
+document.getElementById("prov").onchange = function () {
+    provOtro.classList.toggle('hidden', this.value !== "otro");
+};
+
+// ==============================
+// OTROS (checkbox/radio)
+// ==============================
+otroViv.onchange = () => {
+    otroVivTxt.classList.toggle('hidden', !otroViv.checked);
+};
+
+otroSuelo.onchange = () => {
+    otroSueloTxt.classList.toggle('hidden', !otroSuelo.checked);
+};
+
+otroTecho.onchange = () => {
+    otroTechoTxt.classList.toggle('hidden', !otroTecho.checked);
+};
+
+</script>
+
+</body>
+</html>

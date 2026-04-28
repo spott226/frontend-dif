@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja 1 DIF</title>
+
+<style>
+body{font-family:Arial;background:#eef2f6;margin:0;padding:10px}
+.sheet{background:#fff;border:2px solid #000;max-width:1100px;margin:auto;padding:12px}
+
+.header{background:#1e3a5f;color:#fff;text-align:center;padding:10px;font-weight:bold}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:10px}
+input,select{padding:5px;border:1px solid #333;font-size:12px;width:100%}
+
+.section{border-top:3px solid #1e3a5f;margin-top:14px;padding-top:10px}
+.section-title{background:#1e3a5f;color:white;padding:5px;font-size:13px;margin-bottom:8px}
+
+.inline{display:flex;flex-wrap:wrap;gap:10px}
+.radio{display:flex;gap:20px;margin-top:5px}
+
+.hidden{display:none}
+
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{border:1px solid #000;padding:5px;font-size:12px}
+
+button{width:100%;margin-top:10px;padding:10px;background:#1e3a5f;color:#fff;border:none}
+</style>
+</head>
+
+<body>
+
+<div class="sheet">
+
+<div class="header">
+ESTUDIO SOCIOECONÓMICO – AGUASCALIENTES 2026
+</div>
+
+<!-- ENCABEZADO -->
+<div class="grid">
+<input name="soluciones_id" placeholder="Soluciones ID">
+
+<div class="radio">
+<label><input type="radio" name="tipo" value="A">A</label>
+<label><input type="radio" name="tipo" value="R">R</label>
+</div>
+
+<b>Origen Del Formulario</b>
+<select name="origen_formulario">
+<option value="dif_municipal">DIF Municipal</option>
+<option value="brigada_1">Brigada DIF Estatal 1</option>
+<option value="brigada_2">Brigada DIF Estatal 1</option>
+</select>
+<b>Tipo de Apoyo Solicitado</b>
+<select name="tipo_apoyo_solicitado">
+<option value="embarazo">Embarazo</option>
+<option value="lactante">Lactante de 6 a 24 meses</option>
+<option value="primer_infancia">Primer infancia de 2 a 5 años con 11 meses</option>
+<option value="vulnerabilidad">Vulnerabilidad Adulto mayor o persona con discapacidad</option>
+</select>
+<input name="folio" placeholder="Folio">
+<b>Fecha de elaboración</b>
+<input type="date" name="fecha_elaboracion" placeholder="Fecha elaboración">
+<input id="nombre" name="nombre" placeholder="Nombre">
+<input id="apellido_paterno" name="apellido_paterno" placeholder="Paterno">
+<input id="apellido_materno" name="apellido_materno" placeholder="Materno">
+<b>Fecha de nacimiento</b>
+<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento">
+<select name="field_9">
+<option value="H">H</option>
+<option value="M">M</option>
+</select>
+<input name="calle" placeholder="Calle">
+<input name="no_ext" placeholder="No. Ext">
+<input name="no_int" placeholder="No. Int">
+<select name="municipio">
+<option value="aguascalientes">AGUASCALIENTES</option>
+<option value="rincon_de_romos">RINCON DE ROMOS</option>
+</select>
+<select name="colonia">
+<option value="cerro_del_gato">CERRO DEL GATO</option>
+<option value="de_chora">DE CHORA</option>
+<option value="de_guadalupe">DE GUADALUPE</option>
+<option value="el_chaveño">EL CHAVEÑO</option>
+</select>
+<input name="calle_1" placeholder="Calle 1">
+<input name="calle_2" placeholder="Calle 2">
+<input name="cp" placeholder="CP">
+<input name="localidad" placeholder="Localidad">
+<input name="ocupacion" placeholder="Ocupación">
+<input name="telefono_movil" placeholder="Tel móvil">
+<input name="telefono_fijo" placeholder="Tel fijo">
+<input name="Edad" placeholder="Edad">
+<input id="curp" name="curp" placeholder="CURP">
+<input id="clave_elector" name="clave_elector" placeholder="Clave De Elector">
+<input id="seccion" name="seccion" placeholder="Sección">
+<b>Vigencia INE</b>
+</select>
+<select name="Vigencia_de_INE">
+<option value="2026">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+<option value="2029">2029</option>
+<option value="2030">2030</option>
+<option value="2031">2031</option>
+<option value="2032">2032</option>
+<option value="2033">2033</option>
+<option value="2034">2034</option>
+<option value="2035">2035</option>
+<option value="2036">2036</option>
+</select>
+</div>
+
+<!-- SECCIÓN ESTADO CIVIL -->
+<div class="section">
+<div class="section-title">ESTADO CIVIL</div>
+
+<b>1.- ¿Cuál es su estado civil actual?</b>
+
+<div class="inline">
+<label><input type="radio" name="ec" value="soltero">Soltero</label>
+<label><input type="radio" name="ec" value="casado">Casado</label>
+<label><input type="radio" name="ec" value="divorciado">Divorciado</label>
+<label><input type="radio" name="ec" value="viudo">Viudo</label>
+<label><input type="radio" name="ec" value="union_libre">Unión libre</label>
+<label><input type="radio" name="ec" value="separado">Separado</label>
+<label><input type="radio" name="ec" value="ns_nc">No sabe / No contesta</label>
+<label><input type="radio" id="ecOtro" name="ec" value="otro">Otro</label>
+<input id="ecOtroTxt" name="ecOtroTxt" class="hidden">
+</div>
+</div>
+
+<!-- SECCIÓN SALUD -->
+<div class="section">
+<div class="section-title">SERVICIOS DE SALUD</div>
+
+<b>2.- ¿Está afiliado o cuenta con derecho a servicios de salud?</b>
+
+<div class="radio">
+<label><input type="radio" name="salud" value="si">Sí</label>
+<label><input type="radio" name="salud" value="no">No</label>
+</div>
+
+<div id="saludBox" class="hidden">
+<div class="inline">
+<label><input type="checkbox" name="servicios_salud" value="IMSS">IMSS</label>
+<label><input type="checkbox" name="servicios_salud" value="ISSSTE">ISSSTE</label>
+<label><input type="checkbox" name="servicios_salud" value="ISSEA">ISSEA</label>
+<label><input type="checkbox" name="servicios_salud" value="seguro_popular">Seguro Popular Aguascalientes</label>
+<label><input type="checkbox" name="servicios_salud" value="privado">Médico / hospital privado</label>
+<label><input type="checkbox" name="servicios_salud" value="ns_nc">No sabe / No contesta</label>
+<label><input type="checkbox" id="saludOtro" name="servicios_salud" value="otro">Otro</label>
+<input id="saludOtroTxt" name="salud_otro" class="hidden" placeholder="Especificar">
+</div>
+</div>
+</div>
+
+<!-- DISCAPACIDAD -->
+<div class="section">
+
+<b>3.- ¿Tiene alguna discapacidad que limite sus capacidades? ¿De qué tipo?</b>
+
+<div class="radio">
+<label><input type="radio" name="disc" value="si">Sí</label>
+<label><input type="radio" name="disc" value="no">No</label>
+</div>
+
+<div id="discBox" class="hidden">
+
+<div class="inline">
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="motriz">Motriz</label>
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="visual">Visual</label>
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="habla">Habla</label>
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="auditiva">Auditiva</label>
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="intelectual">Intelectual</label>
+<label><input type="checkbox" class="disc" name="tipo_discapacidad" value="psicosocial">Psicosocial</label>
+<label><input type="checkbox" name="tipo_discapacidad" value="ns_nc">No sabe / No contesta</label>
+<label><input type="checkbox" id="discOtro" name="tipo_discapacidad" value="otro">Otro</label>
+<input id="discOtroTxt" name="disc_otro" class="hidden" placeholder="Especificar">
+</div>
+
+<br>
+
+<b>Motivo de discapacidad</b>
+<div class="inline">
+<label><input type="radio" name="motivo" value="enfermedad">Enfermedad</label>
+<label><input type="radio" name="motivo" value="nacimiento">Nacimiento</label>
+<label><input type="radio" name="motivo" value="accidente">Accidente</label>
+<label><input type="radio" name="motivo" value="edad_avanzada">Edad avanzada</label>
+</div>
+
+</div>
+</div>
+
+<!-- 4 -->
+<div id="credBox" class="section hidden">
+<b>4.- ¿Cuenta con credencial de discapacidad?</b>
+
+<div class="radio">
+<label><input type="radio" name="cred_disc" value="si">Sí</label>
+<label><input type="radio" name="cred_disc" value="no">No</label>
+<label><input type="radio" name="cred_disc" value="na">N/A</label>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="section">
+<div class="section-title">NIVEL ACADÉMICO</div>
+
+<b>5.- ¿Cuál es su último nivel de estudios concluido?</b>
+
+<select name="nivel_estudios">
+<option value="primaria">Primaria</option>
+<option value="secundaria">Secundaria</option>
+<option value="bachillerato">Bachillerato</option>
+<option value="tecnico_superior">Técnico superior</option>
+<option value="licenciatura">Licenciatura</option>
+<option value="maestria">Maestría</option>
+<option value="doctorado">Doctorado</option>
+<option value="sin_estudios">Sin estudios</option>
+<option value="no_sabe">No sabe leer ni escribir</option>
+<option value="otro">Otro</option>
+</select>
+</div>
+
+<!-- 6 -->
+<div class="section">
+
+<b>6.- ¿Le ha sido diagnosticada alguna de las siguientes enfermedades por algún médico?</b>
+
+<div class="inline">
+<label><input type="checkbox" class="enf" name="enfermedades" value="depresion">Depresión</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="cancer">Cáncer</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="renal">Deficiencia renal</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="desnutricion">Desnutrición / anemia</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="diabetes">Diabetes</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="corazon">Enfermedades del corazón</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="enfisema">Enfisema pulmonar</label>
+<label><input type="checkbox" class="enf" name="enfermedades" value="obesidad">Obesidad</label>
+
+<label><input type="checkbox" id="ninguna" name="enfermedades" value="ninguna">Ninguna de ellas</label>
+<label><input type="checkbox" id="enfOtro" name="enfermedades" value="otro">Otra</label>
+<input id="enfOtroTxt" name="enf_otro" class="hidden" placeholder="Especificar">
+</div>
+</div>
+
+<!-- 7 -->
+<div id="tratBox" class="section hidden">
+<b>7.- ¿Actualmente se encuentra bajo algún tratamiento médico para atender esta enfermedad?</b>
+
+<div class="radio">
+<label><input type="radio" name="tratamiento" value="si">Sí</label>
+<label><input type="radio" name="tratamiento" value="no">No</label>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="section">
+
+<b>8.- ¿Alguien más en su familia padece de alguna de estas enfermedades?</b>
+
+<div class="radio">
+<label><input type="radio" name="fam" value="si">Sí</label>
+<label><input type="radio" name="fam" value="no">No</label>
+</div>
+
+<table id="tablaFam" class="hidden">
+<tr><th>#</th><th>Nombre</th><th>Edad</th><th>Parentesco</th><th>Código</th></tr>
+<tr>
+<td>1</td>
+<td><input name="fam_nombre_1"></td>
+<td><input name="fam_edad_1"></td>
+<td><input name="fam_parentesco_1"></td>
+<td><input name="fam_codigo_1"></td>
+</tr>
+<tr>
+<td>2</td>
+<td><input name="fam_nombre_2"></td>
+<td><input name="fam_edad_2"></td>
+<td><input name="fam_parentesco_2"></td>
+<td><input name="fam_codigo_2"></td>
+</tr>
+</table>
+
+</div>
+
+<!-- AVISO -->
+<div class="section" style="font-size:11px">
+* Se le informa que todos los datos personales recabados en el presente documento serán tratados conforme a la Ley Federal de Protección de Datos Personales en Posesión de Particulares (LFPDPPP), así como para el cumplimiento de las atribuciones legales que le confiere los artículos 13 y 30 de la Ley de Protección de Datos Personales en Posesión de los Sujetos Obligados del Estado de Aguascalientes.
+</div>
+
+<button onclick="guardarLocal(); window.location='hoja2.html'">Siguiente</button>
+
+</div>
+
+<script>
+
+function guardarLocal(){
+
+    let data = {};
+
+    // 🔹 INPUTS NORMALES Y RADIOS
+    document.querySelectorAll("input, select").forEach((el) => {
+
+        let key = el.name;
+        if(!key) return;
+
+        if(el.type === "radio"){
+            if(el.checked){
+                data[key] = el.value;
+            }
+        }
+        else if(el.type !== "checkbox"){
+            data[key] = el.value;
+        }
+    });
+
+    // 🔥 CHECKBOXES (UNA SOLA VEZ POR GRUPO)
+    const checkboxGroups = ["servicios_salud", "tipo_discapacidad", "enfermedades"];
+
+    checkboxGroups.forEach(key => {
+        data[key] = [];
+
+        document.querySelectorAll(`[name="${key}"]:checked`).forEach(c => {
+            data[key].push(c.value);
+        });
+    });
+
+    localStorage.setItem("formData", JSON.stringify(data));
+}
+
+document.querySelectorAll('[name="salud"]').forEach(r=>{
+r.onchange=()=>saludBox.classList.toggle('hidden',r.value!=="si")
+})
+
+document.querySelectorAll('[name="disc"]').forEach(r=>{
+r.onchange=()=>{
+if(r.value==="si"){
+discBox.classList.remove('hidden')
+credBox.classList.remove('hidden')
+}else{
+discBox.classList.add('hidden')
+credBox.classList.add('hidden')
+document.querySelectorAll('.disc').forEach(c=>c.checked=false)
+discOtro.checked=false
+discOtroTxt.value=""
+}
+}
+})
+
+document.querySelectorAll('.enf').forEach(e=>{
+e.onchange=()=>{
+ninguna.checked=false
+tratBox.classList.remove('hidden')
+}
+})
+
+ninguna.onchange=()=>{
+if(ninguna.checked){
+document.querySelectorAll('.enf').forEach(e=>e.checked=false)
+tratBox.classList.add('hidden')
+}
+}
+
+ecOtro.onchange=()=>{
+ecOtroTxt.classList.toggle('hidden', !ecOtro.checked)
+}
+
+discOtro.onchange=()=>{
+discOtroTxt.classList.toggle('hidden', !discOtro.checked)
+}
+
+saludOtro.onchange=()=>{
+saludOtroTxt.classList.toggle('hidden', !saludOtro.checked)
+}
+
+enfOtro.onchange=()=>{
+enfOtroTxt.classList.toggle('hidden', !enfOtro.checked)
+}
+
+document.querySelectorAll('[name="fam"]').forEach(r=>{
+r.onchange=()=>tablaFam.classList.toggle('hidden',r.value!=="si")
+})
+
+</script>
+
+</body>
+</html>

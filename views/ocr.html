@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIF Captura</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg,#e9eff5,#f8fbff);
+  padding:20px;
+  text-align:center;
+}
+
+.container {
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  width:420px;
+  margin:auto;
+}
+
+.logo {
+  width:120px;
+  margin-bottom:10px;
+}
+
+h2 {
+  margin:5px 0;
+  color:#1e3a5f;
+}
+
+p {
+  font-size:13px;
+  color:#555;
+}
+
+.block {
+  margin-top:15px;
+  text-align:left;
+}
+
+label {
+  font-size:13px;
+  font-weight:bold;
+}
+
+input {
+  margin-top:5px;
+  width:100%;
+}
+
+button {
+  padding:12px;
+  margin-top:20px;
+  cursor:pointer;
+  width:100%;
+  background:#1e3a5f;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+button:hover {
+  background:#16314d;
+}
+
+#loading {
+  display:none;
+  margin-top:15px;
+  font-weight:bold;
+  color:#1e3a5f;
+}
+
+.footer {
+  margin-top:15px;
+  font-size:11px;
+  color:#777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- 🔹 LOGO (puedes cambiar ruta) -->
+<img src="/logo-dif.png" class="logo">
+
+<h2>CAPTURA DIF</h2>
+<p>Sube los documentos del beneficiario</p>
+
+<form id="formOCR">
+
+  <div class="block">
+    <label>INE</label>
+    <input type="file" name="ine" accept="image/*,application/pdf" required>
+  </div>
+
+  <div class="block">
+    <label>CURP</label>
+    <input type="file" name="curp" accept="image/*,application/pdf">
+  </div>
+
+  <div class="block">
+    <label>Comprobante de domicilio</label>
+    <input type="file" name="domicilio" accept="image/*,application/pdf">
+  </div>
+
+  <button type="submit">Procesar documentos</button>
+
+</form>
+
+<p id="loading">Procesando información...</p>
+
+<div class="footer">
+Sistema de captura asistida DIF 2026
+</div>
+
+</div>
+
+<script>
+
+const form = document.getElementById('formOCR')
+const loading = document.getElementById('loading')
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault()
+
+  const ine = form.ine.files[0]
+
+  if (!ine) {
+    alert("La INE es obligatoria")
+    return
+  }
+
+  const formData = new FormData()
+  formData.append('ine', ine)
+
+  if (form.curp.files[0]) {
+    formData.append('curp', form.curp.files[0])
+  }
+
+  if (form.domicilio.files[0]) {
+    formData.append('domicilio', form.domicilio.files[0])
+  }
+
+  loading.style.display = 'block'
+
+  try {
+
+    const res = await fetch('/api/documentos', {
+      method: 'POST',
+      body: formData
+    })
+
+    const data = await res.json()
+
+    console.log("🧠 OCR RESULTADO:", data)
+
+    if (!data.success) {
+      alert("Error en OCR")
+      return
+    }
+
+    // 🔥 GUARDAR RESULTADO
+    localStorage.setItem('datosOCR', JSON.stringify(data.data))
+
+    console.log("📦 GUARDADO:", JSON.parse(localStorage.getItem('datosOCR')))
+
+    // 🔥 REDIRECCIÓN A HOJA 1 (AUTOLLENADO)
+    window.location.href = "hoja1.html"
+
+  } catch (error) {
+    console.error("❌ ERROR:", error)
+    alert("Error al procesar documentos")
+  }
+
+  loading.style.display = 'none'
+})
+
+</script>
+
+</body>
+</html>
